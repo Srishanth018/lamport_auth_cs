@@ -50,7 +50,7 @@ Edit `config.ini` to modify:
 ---
 
 ## CMakeLists Information  
-#### Paste one of this in CMakeLists.txt based on your OS
+#### Paste one of this in CMakeLists.txt based on your OS (Also make sure you edit the appropriate fallback path according to your system)
 Depending on your platform, you should use the appropriate CMakeLists file  
 
 * Windows: `info/CMakeLists_windows.txt`
