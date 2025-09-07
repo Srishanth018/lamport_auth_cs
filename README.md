@@ -117,11 +117,14 @@ cmake --build .
 ```
 
 #### Step 3: Running the Application
+#### Double click on the executable file inside build folder or:
 
+#### For Windows (For Linux simply change .exe to .out)
 * Launch Alice (Verifier):
 
   ```bash
-  ./YourExecutableName
+  cd build
+  ./LamportAuthProtocol.exe
   ```
 
   Click "Start as Alice (Verifier)" in GUI.
@@ -129,7 +132,8 @@ cmake --build .
 * Launch Bob (Prover):
 
   ```bash
-  ./YourExecutableName
+  cd build
+  ./LamportAuthProtocol.exe
   ```
 
   Click "Start as Bob (Prover)" in GUI.
