@@ -1,4 +1,4 @@
-#CMake For Windows
+#CMake for Linux
 cmake_minimum_required(VERSION 3.16)
 project(LamportAuthProtocol)
 
@@ -10,18 +10,18 @@ set(CMAKE_AUTORCC ON)
 
 find_package(Qt6 REQUIRED COMPONENTS Core Widgets Network)
 
-# Find Crypto++ manually
+# Manually find Crypto++ since find_package fails
 find_path(CRYPTOPP_INCLUDE_DIR cryptopp/cryptlib.h
-    PATHS C:/Users/anubh/vcpkg/installed/x64-mingw-static/include
+    PATHS /usr/include
 )
 
 find_library(CRYPTOPP_LIBRARY
-    NAMES cryptopp cryptopp-static cryptlib
-    PATHS C:/Users/anubh/vcpkg/installed/x64-mingw-static/lib
+    NAMES cryptopp cryptopp-static
+    PATHS /usr/lib/x86_64-linux-gnu
 )
 
 if(NOT CRYPTOPP_INCLUDE_DIR OR NOT CRYPTOPP_LIBRARY)
-    message(FATAL_ERROR "Crypto++ not found. Install using vcpkg with MinGW toolchain.")
+    message(FATAL_ERROR "Crypto++ not found. Please install libcrypto++-dev.")
 endif()
 
 message(STATUS "Found Crypto++ include: ${CRYPTOPP_INCLUDE_DIR}")
@@ -55,10 +55,6 @@ target_link_libraries(LamportAuthProtocol
     PRIVATE Qt6::Core Qt6::Widgets Qt6::Network
     PRIVATE ${CRYPTOPP_LIBRARY}
 )
-
-if(WIN32)
-    target_link_libraries(LamportAuthProtocol PRIVATE ws2_32)
-endif()
 
 configure_file(${CMAKE_SOURCE_DIR}/config.ini ${CMAKE_BINARY_DIR}/config.ini COPYONLY)
 
