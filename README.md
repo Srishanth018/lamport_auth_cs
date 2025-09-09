@@ -112,7 +112,7 @@ sudo apt install build-essential cmake qt6-base-dev qt6-tools-dev libcrypto++-de
 ```bash
 mkdir build
 cd build
-cmake ..
+cmake ./..
 cmake --build .
 ```
 
